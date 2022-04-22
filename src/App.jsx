@@ -1,12 +1,12 @@
 import React, { useMemo, useRef, useState } from "react";
-
 import "./styles/App.css"
-
 import PostList from "./components/PostList";
 import MyButton from "./components/UI/button/MyButton";
 import MyInput from "./components/UI/input/MyInput";
 import PostForm from "./components/PostForm";
 import { MySelect } from "./components/UI/select/MySelect";
+import { Test } from "./components/Test";
+import Counter from "./components/Counter";
 
 
 function App() {
@@ -26,13 +26,10 @@ function App() {
 		}
 		return posts
 	}, [selectedSort, posts])
-	// function getSortedPosts() {
-	// 	console.log("Fn")
-	// 	if (selectedSort) {
-	// 		return [...posts].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]))
-	// 	}
-	// 	return posts
-	// }
+
+	const sortedAndSearchedPosts = useMemo(() => {
+		return sortedPosts.filter(post => post.title.includes(searchQuery))
+	}, [searchQuery, posts])
 	const createPost = (newPost) => {
 		setPosts([...posts, newPost])
 	}
@@ -47,6 +44,8 @@ function App() {
 	}
 	return (
 		<div className="App">
+			<Counter />
+			{/* <Test number={123} />
 			<PostForm create={createPost} />
 			<hr style={{ margin: '15px 5px' }} />
 			<div>
@@ -66,10 +65,10 @@ function App() {
 				/>
 
 			</div>
-			{posts.length !== 0
-				? <PostList remove={removePost} posts={sortedPosts} title={"Hello"} />
+			{sortedAndSearchedPosts.length !== 0
+				? <PostList remove={removePost} posts={sortedAndSearchedPosts} title={"Hello"} />
 				: <h1 style={{ textAlign: 'center' }}>Posts not found</h1>
-			}
+			} */}
 
 		</div>
 	);
