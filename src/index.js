@@ -3,24 +3,47 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './App';
 import { createStore } from 'redux';
+import { store } from './components/toolkitReducer';
 
-const defaultState = {
-	count: 0,
-}
-const reducer = (state = defaultState, action) => {
-	switch (action.type) {
-		case "INCREMENT":
-			return { ...state, count: state.count + action.payload }
-		case "DECREMENT":
-			return { ...state, count: state.count - action.payload }
-		default:
-			return state
-	}
+// const defaultState = {
+// 	count: 5,
+// }
 
-}
+// export const increment = (value) => ({type: "INCREMENT", payload: value})
 
-const store = createStore(reducer)
+// const reducer = (state = defaultState, action) => {
+// 	switch (action.type) {
+// 		case "INCREMENT":
+// 			state.count = state.count + action.payload
+// 			//return { ...state, count: state.count + action.payload }
+// 			return state
+// 		case "DECREMENT":
+// 			return { ...state, count: state.count - action.payload }
+// 		default:
+// 			return state
+// 	}
+// }
 
+// const store = createStore(reducer)
+
+// const defaultState = {
+// 	value: "Text",
+// }
+// const INPUT = "INPUT"
+// export const setInput = (value) => ({ type: INPUT, payload: value })
+
+// const reducer = (state = defaultState, action) => {
+// 	switch (action.type) {
+// 		case "INPUT":
+// 			return { ...state, value: action.payload }
+
+// 		default:
+// 			return state
+// 	}
+// }
+
+// const store = createStore(reducer)
+console.log(store)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<Provider store={store}>

@@ -1,50 +1,48 @@
 import React, { useMemo, useRef, useState } from "react";
+import MyInput1 from "./components/UI/input/MyInput1";
 import "./styles/App.css"
-import PostList from "./components/PostList";
-import MyButton from "./components/UI/button/MyButton";
-import MyInput from "./components/UI/input/MyInput";
-import PostForm from "./components/PostForm";
-import { MySelect } from "./components/UI/select/MySelect";
-import { Test } from "./components/Test";
-import Counter from "./components/Counter";
+
+
+
 
 
 function App() {
-	const [posts, setPosts] = useState([
-		{ title: "бб", id: 1, body: "бб" },
-		{ title: "аа", id: 2, body: "гг" },
-		{ title: "вв", id: 3, body: "уу" },
-	])
+	// const [posts, setPosts] = useState([
+	// 	{ title: "бб", id: 1, body: "бб" },
+	// 	{ title: "аа", id: 2, body: "гг" },
+	// 	{ title: "вв", id: 3, body: "уу" },
+	// ])
 
-	const [selectedSort, setSelectedSort] = useState('')
-	const [searchQuery, setSearchQuery] = useState('')
+	// const [selectedSort, setSelectedSort] = useState('')
+	// const [searchQuery, setSearchQuery] = useState('')
 
-	const sortedPosts = useMemo(() => {
-		console.log("Fn")
-		if (selectedSort) {
-			return [...posts].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]))
-		}
-		return posts
-	}, [selectedSort, posts])
+	// const sortedPosts = useMemo(() => {
+	// 	console.log("Fn")
+	// 	if (selectedSort) {
+	// 		return [...posts].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]))
+	// 	}
+	// 	return posts
+	// }, [selectedSort, posts])
 
-	const sortedAndSearchedPosts = useMemo(() => {
-		return sortedPosts.filter(post => post.title.includes(searchQuery))
-	}, [searchQuery, posts])
-	const createPost = (newPost) => {
-		setPosts([...posts, newPost])
-	}
-	const sortPosts = (sort) => {
-		setSelectedSort(sort);
+	// const sortedAndSearchedPosts = useMemo(() => {
+	// 	return sortedPosts.filter(post => post.title.includes(searchQuery))
+	// }, [searchQuery, posts])
+	// const createPost = (newPost) => {
+	// 	setPosts([...posts, newPost])
+	// }
+	// const sortPosts = (sort) => {
+	// 	setSelectedSort(sort);
 
-		console.log(sort)
-	}
+	// 	console.log(sort)
+	// }
 
-	const removePost = (post) => {
-		setPosts(posts.filter(p => p.id !== post.id))
-	}
+	// const removePost = (post) => {
+	// 	setPosts(posts.filter(p => p.id !== post.id))
+	// }
 	return (
 		<div className="App">
-			<Counter />
+
+			<MyInput1 />
 			{/* <Test number={123} />
 			<PostForm create={createPost} />
 			<hr style={{ margin: '15px 5px' }} />
