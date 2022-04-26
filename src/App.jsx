@@ -1,8 +1,9 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import MyInput1 from "./components/UI/input/MyInput1";
 import "./styles/App.css"
-
-
+import { fetchCustomers } from "./components/reduxThunk/customer";
+import { fetchTodos } from "./components/toolkitReducer/toolkitSlice";
 
 
 
@@ -39,10 +40,34 @@ function App() {
 	// const removePost = (post) => {
 	// 	setPosts(posts.filter(p => p.id !== post.id))
 	// }
+	const value = useSelector(state => state.toolkit.value)
+	const dispatch = useDispatch()
+	const login = useSelector(state => state.toolkit.login)
+	const status = useSelector(state => state.toolkit.status)
+	console.log(status)
+	function btnClick() {
+
+		dispatch(fetchTodos())
+		if (status == "loading") {
+			console.log("loading....")
+		}
+		console.log(value, login, status)
+	}
 	return (
 		<div className="App">
+			<input
+				style={{ margin: "15px" }}
+				type="text"
+				placeholder={value}
+			/>
+			<button onClick={() => btnClick()}>
+				Ввести логин
+			</button>
 
-			<MyInput1 />
+
+
+
+
 			{/* <Test number={123} />
 			<PostForm create={createPost} />
 			<hr style={{ margin: '15px 5px' }} />
@@ -68,7 +93,7 @@ function App() {
 				: <h1 style={{ textAlign: 'center' }}>Posts not found</h1>
 			} */}
 
-		</div>
+		</div >
 	);
 }
 
