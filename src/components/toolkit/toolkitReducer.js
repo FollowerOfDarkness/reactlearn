@@ -11,4 +11,3 @@ export default createReducer(initialState, {
 		state.value = state.value
 	}
 })
-console.log(input)
